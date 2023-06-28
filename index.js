@@ -42,7 +42,7 @@ function addFood(menu)
                     </div>
                 </div>
                 <!-- Add to Order -->
-                <button class="add-item" id="add-btn" data-add=${item.id}>+</button>
+                <button class="add-item-btn" id="add-btn" data-add=${item.id}>+</button>
             </div>
         `
     })
@@ -71,12 +71,14 @@ function orderListRender(){
 
 function removeItem(itemId)
 {
+    let itemIndex
     orderListArray.forEach(function(item, index){
         if(item.id === itemId)
         {
-            orderListArray.splice(index,1)
+            itemIndex = index
         }
     })
+    orderListArray.splice(itemIndex,1)
 
     orderListRender()
 }

@@ -4,21 +4,29 @@ body {
     color: black;
 } 
 
-.hidden{
-    display: none;
-}
+
 
 
 /* Design */
 
+    /* Element Selectors */
+
 header{
-    background: darkgray;
+    background: url("assets/header-background-burger.jpg");
+    background-size:auto;
+    background-repeat: no-repeat;
+    background-position: center;
     padding: 56px 0;
 }
 
+button{
+    user-select: none;
+}
 button:hover{
     cursor: pointer;
 }
+
+    /* Class Selectors */
 
 .container{
     margin: 0 auto;
@@ -37,24 +45,35 @@ button:hover{
     border-bottom: 1px solid #D2D2D2;
 }
 
+.food-icon{
+    font-size: 78px;
+    margin: 0;
+    user-select: none;
+}
+
 .food-info{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.add-item{
+.add-item-btn{
     background: transparent;
     width: 50px;
     height: 50px;
-
+    padding: 0;
     border: 1.5px solid #DEDEDE;
-
     border-radius: 50%;
-    
+    color: #3C3C3C;
+    font-size: 32px;
+    font-family: Inter;
+}
+.add-item-btn:hover,
+.add-item-btn:active{
+    scale: 1.05;
 }
 
-.item-list{
+.order-list{
     display: flex;
     flex-direction: column;
     gap: 13px;
@@ -65,6 +84,10 @@ button:hover{
     color: #BBB;
     background: transparent;
     border: none;
+}
+.remove-btn:hover,
+.remove-btn:active{
+    text-decoration: underline;
 }
 
 .total-price{
@@ -99,17 +122,28 @@ button:hover{
     box-shadow: 5px 5px 5px rgba(53, 53, 53, 0.5);
 }
 
+.hidden{
+    display: none;
+}
 
 
 /* Text Styles */
 
 header{
     color: #FFF;
-    font-size: 22px;
+}
+
+header p{
+    font-size:22px
 }
 
 h1{
     font-size: 39px;
+}
+
+footer h2{
+    text-align: center;
+    margin:45px auto 65px;
 }
 
 .font-overide{
@@ -127,20 +161,15 @@ h1{
     margin: 0;
 }
 
-
 .price{
     margin: 8px 0 0 0;
     font-size: 20px;
 }
 
-.food-icon{
-    font-size: 78px;
-    margin: 0;
-}
 
-footer h2{
-    text-align: center;
-    margin:45px auto 65px;
+
+.shadow{
+    text-shadow: 2px 2px #393333;
 }
 
 
