@@ -4,10 +4,20 @@ body {
     color: black;
 } 
 
+.hidden{
+    display: none;
+}
+
+
 /* Design */
 
 header{
     background: darkgray;
+    padding: 56px 0;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 .container{
@@ -44,6 +54,53 @@ header{
     
 }
 
+.item-list{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.remove-btn{
+    font-size: 12px;
+    color: #BBB;
+    background: transparent;
+    border: none;
+}
+
+.total-price{
+    margin-top: 31px;
+    border-top: 2px solid #393333;
+}
+
+.submit-btn{
+    width: 100%;
+    padding: 18px 175px 18px 194px;
+    border-radius: 3px;
+    border: none;
+    background: #16DB99;
+    color:#FFF;
+    margin: 53px auto;
+}
+
+.modal{
+    display: block;
+
+    width: 524;
+    height: 542px;
+    
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin: auto;
+    background: white;
+
+    box-shadow: 5px 5px 5px rgba(53, 53, 53, 0.5);
+}
+
+
+
 /* Text Styles */
 
 header{
@@ -70,10 +127,6 @@ h1{
     margin: 0;
 }
 
-.small-grey-text{
-    font-size: 12px;
-    color: #BBB;
-}
 
 .price{
     margin: 8px 0 0 0;
@@ -87,7 +140,7 @@ h1{
 
 footer h2{
     text-align: center;
-    
+    margin:45px auto 65px;
 }
 
 

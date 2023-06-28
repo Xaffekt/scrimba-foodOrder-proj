@@ -25,44 +25,37 @@
             <p class="container">The best burgers and pizza in town</p>
         </header>
         <!-- Food selection -->
-        <section class="container">
-            <div class="seperate food-list">                
-                <!-- Item text -->
-                <div class="food-info">
-                    <p class="food-icon">🍕</p>
-                    <div>
-                        <h2 class="dark-text">Food Name</h2>
-                        <p class="grey-subtext">description</p>
-                        <p class="price">$0</p>
-                    </div>
-                </div>
-                <!-- Add to Order -->
-                <button class="add-item">+</button>
-            </div>
-
-            
-        </section>
+        <section class="container" id="food-list-container"></section>
 
 
         <!-- Order Section -->
-        <footer class="container">
+        <footer class="container" id="current-order">
             <h2 class="">Your Order</h2>
             <!-- List of Items -->
-            <div class="item-list">
-                <div class="seperate">
-                    <div>
-                        <span class="dark-text">Item</span>
-                        <span class="small-grey-text font-overide">remove</span>
-                    </div>
-                    <p class="price">$0</p>
-                </div>
+            <div class="item-list" id="order-list">
             </div>
-            <div class="seperate item-list">
+            <div class="seperate total-price">
                 <h3>Total price:</h3>
-                <p class="price">$0</p>
+                <p class="price" id="total-price">$0</p>
             </div>
-            <button id="order-btn font-overide">Complete Order</button>
+            <button class="submit-btn font-overide">Complete Order</button>
         </footer>
+
+        <div class="modal" id="modal">
+            <h2>Enter card details</h2>
+            <form>
+                <input 
+                    type="text" 
+                    placeholder="Enter your name"
+                    id="input-name"
+                    name="input-name"
+                    >
+                <input type="text" placeholder="Enter your card number">
+                <input type="text" placeholder="Enter CVV">
+            </form>
+            <button class="submit-btn">Pay</button>
+        </div>
+
 	    <script src="index.js" type="module"></script>
     </body>
 </html>
