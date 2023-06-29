@@ -2,14 +2,13 @@ body {
     margin: 0;
     font-family: 'Smythe', sans-serif;
     color: black;
-} 
+}
 
 
 
 
 /* Design */
 
-    /* Element Selectors */
 
 header{
     background: url("assets/header-background-burger.jpg");
@@ -26,18 +25,6 @@ button{
 button:hover{
     cursor: pointer;
 }
-
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-input{
-    height: 71px;
-}
-
-    /* Class Selectors */
 
 .container{
     margin: 0 auto;
@@ -76,7 +63,7 @@ input{
     border-radius: 50%;
     color: #3C3C3C;
     font-size: 32px;
-    font-family: Inter;
+    font-family: 'Inter';
 }
 .add-item-btn:hover,
 .add-item-btn:active{
@@ -115,22 +102,54 @@ input{
 }
 
 .modal{
-    display: block;
-
-    width: 524;
-    height: 542px;
-    padding: 47px 24px 29px;
-    
+    /* display: none; */
     position: fixed;
-    top:0;
-    bottom:0;
-    left:0;
     right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
     margin: auto;
+    height: 542px;
+    width: 524px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 2px #666;
     background: #FFF;
-
-    box-shadow: 5px 5px 5px rgba(53, 53, 53, 0.5);
+    
 }
+
+.modal-inner{
+    width: 476px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+.modal-inner h2{
+    margin: 46px auto;
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+    margin: 0;
+}
+input{
+    height: 71px;
+    width: 100%;
+    border-radius: 3.89px;
+    border: 1.297px solid #757575;
+    padding-left: 26px;
+}
+#modal-submit-btn{
+    width: 100%;
+    height: 71px ;
+    font-weight: bold;
+    padding: 0;
+    margin: 26px 0 0 0;
+}
+
 
 .hidden{
     display: none;
@@ -151,7 +170,7 @@ h1{
     font-size: 39px;
 }
 
-footer h2{
+#current-order h2{
     text-align: center;
     margin:45px auto 65px;
 }

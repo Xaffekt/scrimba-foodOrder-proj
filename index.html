@@ -21,39 +21,41 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     </head>
     <body>
-        <!-- Hero -->
-        <header>
-            <!-- Background image -->
-            <h1 class="container shadow">Jimmy's Diner</h1>
-            <p class="container shadow">The best burgers and pizza in town</p>
-        </header>
-        <!-- Food selection -->
-        <section class="container" id="food-list-container"></section>
+        <main>
+            <!-- Hero -->
+            <header>
+                <!-- Background image -->
+                <h1 class="container shadow">Jimmy's Diner</h1>
+                <p class="container shadow">The best burgers and pizza in town</p>
+            </header>
+            <!-- Food selection -->
+            <section class="container" id="food-list-container"></section>
 
 
-        <!-- Order Section -->
-        <footer class="container" id="current-order">
-            <h2>Your Order</h2>
-            <!-- List of Items -->
-            <div class="order-list" id="order-list">
+            <!-- Order Section -->
+            <section class="container" id="current-order">
+                <h2>Your Order</h2>
+                <!-- List of Items -->
+                <div class="order-list" id="order-list">
+                </div>
+                <div class="seperate total-price">
+                    <h3>Total price:</h3>
+                    <p class="price" id="total-price">$0</p>
+                </div>
+                <button class="submit-btn font-overide" id="complete-order">Complete Order</button>
+            </section>
+        </main>
+        <div class="modal hidden" id="modal">
+            <div class="modal-inner font-overide">
+                <h2>Enter card details</h2>
+                <form id="card-details-form">
+                    <input type="text" name="input-name" placeholder="Enter your name" required>
+                    <input name="credit-number" type="tel" pattern="\d*" maxlength="19" placeholder="Enter card number">
+                    <input name="credit-ccv" type="tel" pattern="\d*" maxlength="3" placeholder="Enter CCV">
+                    <button type="submit" class="submit-btn" id="modal-submit-btn">Pay</button>
+                </form>
             </div>
-            <div class="seperate total-price">
-                <h3>Total price:</h3>
-                <p class="price" id="total-price">$0</p>
-            </div>
-            <button class="submit-btn font-overide">Complete Order</button>
-        </footer>
-
-        <div class="modal font-overide" id="modal">
-            <h2>Enter card details</h2>
-            <form>
-                <input type="text" placeholder="Enter your name" id="input-name" name="input-name">
-                <input type="text" placeholder="Enter your card number">
-                <input type="text" placeholder="Enter CVV">
-            </form>
-            <button class="submit-btn">Pay</button>
         </div>
-
 	    <script src="index.js" type="module"></script>
     </body>
 </html>

@@ -2,8 +2,11 @@ import {menuArray} from "./data.js"
 
 const foodList = document.getElementById('food-list-container')
 const orderList = document.getElementById('order-list')
-const removeAllBtn = document.getElementById('remove-all')
+const completeOrderBtn = document.getElementById('complete-order')
 const orderListArray = []
+
+const modalEl = document.getElementById('modal')
+const payBtn = document.getElementById('modal-submit-btn')
 
 document.addEventListener("click",function(e)
 {
@@ -14,6 +17,14 @@ document.addEventListener("click",function(e)
     else if(e.target.dataset.remove)
     {
         removeItem(e.target.dataset.remove)
+    }
+    else if(e.target === completeOrderBtn)
+    {
+        modalEl.style.display = 'inline'
+    }
+    else if(e.target === payBtn)
+    {
+        purchaseOrder()
     }
 })
 
@@ -61,6 +72,16 @@ function removeItem(itemId)
     })
 
     orderListRender()
+}
+
+function totalPrice()
+{
+    let totalPrice = 0
+
+    orderListArray.forEach(function(item){
+        totalPrice += item.price * item.quantity
+    })
+    document.getElementById('total-price').innerHTML = `$${totalPrice}`
 }
 
 function foodListRender(menu)
@@ -112,14 +133,16 @@ function orderListRender()
     totalPrice()
 }
 
-function totalPrice()
+function purchaseOrder()
 {
-    let totalPrice = 0
-
-    orderListArray.forEach(function(item){
-        totalPrice += item.price * item.quantity
-    })
-    document.getElementById('total-price').innerHTML = `$${totalPrice}`
+    modalEl.style.display = 'hidden'
+    const formEl = new FormData(document.getElementById('card-details-form'))
+    // const firstName = formEl.get('input-name')
+    firstName = "bob"
+    console.log(firstName)
+    document.getElementById('current-order').innerHTML = `
+        <p class="order-complete-text">Thanks, ${firstName}! Your order is on its way!</p>
+    `
 }
 
 function render()
