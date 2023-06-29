@@ -195,11 +195,16 @@ h1{
     font-size: 20px;
 }
 
-
-
 .shadow{
     text-shadow: 2px 2px #393333;
 }
 
+.order-complete-text{
+    font-size: 32px;
+    color: #065F46;
+    text-align: center;
+    background: #ECFDF5;
+    padding: 50px 60px;
+}
 
 

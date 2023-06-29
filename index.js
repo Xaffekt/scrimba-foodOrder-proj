@@ -24,6 +24,7 @@ document.addEventListener("click",function(e)
     }
     else if(e.target === payBtn)
     {
+        e.preventDefault()
         purchaseOrder()
     }
 })
@@ -133,17 +134,7 @@ function orderListRender()
     totalPrice()
 }
 
-function purchaseOrder()
-{
-    modalEl.style.display = 'hidden'
-    const formEl = new FormData(document.getElementById('card-details-form'))
-    // const firstName = formEl.get('input-name')
-    firstName = "bob"
-    console.log(firstName)
-    document.getElementById('current-order').innerHTML = `
-        <p class="order-complete-text">Thanks, ${firstName}! Your order is on its way!</p>
-    `
-}
+
 
 function render()
 {
@@ -151,3 +142,15 @@ function render()
 } 
 
 render();
+
+function purchaseOrder()
+{
+    modalEl.style.display = 'none'
+    const formEl = new FormData(document.getElementById('card-details-form'))
+    let firstName = formEl.get('input-name')
+    //splice() string, starts at 0 go to indexOf(" ")
+    console.log(firstName)
+    document.getElementById('current-order').innerHTML = `
+        <p class="order-complete-text">Thanks, ${firstName}! Your order is on its way!</p>
+    `
+}
