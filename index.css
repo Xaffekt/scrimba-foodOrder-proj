@@ -5,14 +5,62 @@ body {
 }
 
 
+/* Text Styles */
+
+header{
+    color: #FFF;
+}
+
+header p{
+    font-size:22px
+}
+
+h1{
+    font-size: 39px;
+}
+
+#current-order h2{
+    text-align: center;
+    margin:45px auto 65px;
+}
+
+.font-overide{
+    font-family: Verdana;
+}
+
+.dark-text{
+    font-size: 28px;
+    margin: 0 0 9px 0;
+}
+
+.grey-subtext{
+    font-size: 16px;
+    color: #8B8B8B;
+    margin: 0;
+}
+
+.price{
+    margin: 8px 0 0 0;
+    font-size: 20px;
+}
+
+.shadow{
+    text-shadow: 2px 2px #393333;
+}
+
+.order-complete-text{
+    font-size: 32px;
+    color: #065F46;
+    text-align: center;
+    background: #ECFDF5;
+    padding: 50px 60px;
+}
 
 
 /* Design */
-
-
 header{
     background: url("assets/header-background-burger.jpg");
-    background-size:auto;
+    background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
     padding: 56px 0;
@@ -153,58 +201,6 @@ input{
 
 .hidden{
     display: none;
-}
-
-
-/* Text Styles */
-
-header{
-    color: #FFF;
-}
-
-header p{
-    font-size:22px
-}
-
-h1{
-    font-size: 39px;
-}
-
-#current-order h2{
-    text-align: center;
-    margin:45px auto 65px;
-}
-
-.font-overide{
-    font-family: Verdana;
-}
-
-.dark-text{
-    font-size: 28px;
-    margin: 0 0 9px 0;
-}
-
-.grey-subtext{
-    font-size: 16px;
-    color: #8B8B8B;
-    margin: 0;
-}
-
-.price{
-    margin: 8px 0 0 0;
-    font-size: 20px;
-}
-
-.shadow{
-    text-shadow: 2px 2px #393333;
-}
-
-.order-complete-text{
-    font-size: 32px;
-    color: #065F46;
-    text-align: center;
-    background: #ECFDF5;
-    padding: 50px 60px;
 }
 
 

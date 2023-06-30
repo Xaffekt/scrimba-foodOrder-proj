@@ -69,7 +69,7 @@ function removeDuplicateFood(foodItem)
     }
 }
 
-function handleRemoveItem(itemId)
+function handleRemoveItem(itemId) //tried adding removeAll btn but it was causing a lot of problems. may revisit in the future
 {
     orderListArray.forEach(function(item, index){
         if(item.id === itemId)
