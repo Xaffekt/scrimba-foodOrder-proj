@@ -1,36 +1,43 @@
+
+//QUESTION: would it be better to move the logical functions(everything besides renders and event listeners) 
+// to their own file? Or is it ok to have it all in this file
+
 import {menuArray} from "./data.js"
 
 const foodList = document.getElementById('food-list-container')
+const orderSection = document.getElementById('current-order')
 const orderList = document.getElementById('order-list')
-const completeOrderBtn = document.getElementById('complete-order')
-const orderListArray = []
+const completeOrderBtn = document.getElementById('submit-order-btn')
+const finishedOrder = document.getElementById('finished-order')
+
+//updated in purchaseOrder()
+let orderListArray = []
 
 const modalEl = document.getElementById('modal')
 const payBtn = document.getElementById('modal-submit-btn')
+const cardDetailsForm = document.getElementById('card-details-form')
 
 document.addEventListener("click",function(e)
 {
     if(e.target.dataset.add)
     {
         handleAddItem(e.target.dataset.add)
+        hideOrder()
     }
     else if(e.target.dataset.remove)
     {
-        removeItem(e.target.dataset.remove)
+        handleRemoveItem(e.target.dataset.remove)
+        hideOrder()
     }
     else if(e.target === completeOrderBtn)
     {
         modalEl.style.display = 'inline'
     }
-    else if(e.target === payBtn)
-    {
-        e.preventDefault()
-        purchaseOrder()
-    }
-    else if(e.target.closest('.modal'))
-    {
-        modalEl.style.display = 'hidden'
-    }
+})
+
+cardDetailsForm.addEventListener('submit',function(e){
+    e.preventDefault()
+    purchaseOrder()
 })
 
 function handleAddItem(itemId)
@@ -48,7 +55,6 @@ function handleAddItem(itemId)
 
 function removeDuplicateFood(foodItem)
 {
-    console.log(foodItem.quantity)
     let itemIndex
     let isOrdered = false
     orderListArray.forEach(function(item, index){
@@ -63,7 +69,7 @@ function removeDuplicateFood(foodItem)
     }
 }
 
-function removeItem(itemId)
+function handleRemoveItem(itemId)
 {
     orderListArray.forEach(function(item, index){
         if(item.id === itemId)
@@ -79,15 +85,56 @@ function removeItem(itemId)
     orderListRender()
 }
 
-function totalPrice()
-{
-    let totalPrice = 0
 
-    orderListArray.forEach(function(item){
-        totalPrice += item.price * item.quantity
-    })
-    document.getElementById('total-price').innerHTML = `$${totalPrice}`
+function hideOrder()
+{
+    if(orderListArray.length < 1)
+    {
+        orderSection.classList.add('hidden')
+    }
+    else{
+        orderSection.classList.remove('hidden')
+        finishedOrder.classList.add('hidden')
+    }
 }
+
+function purchaseOrder()
+{
+    modalEl.style.display = 'none'
+    const form = new FormData(cardDetailsForm)
+    const fullName = form.get('input-name')
+    let firstName = ""
+
+    //ensures name is rendered if there is no spaces
+    if(fullName.indexOf(" ") < 0)
+    {
+        firstName = fullName
+    }
+    else{
+        firstName = fullName.substring(0,fullName.indexOf(" "))
+    }
+
+    //resets order section
+    orderSection.classList.add('hidden')
+    orderListArray = []
+    resetQuantity()
+
+    //replaces order section with finished order div
+    finishedOrder.classList.remove('hidden')
+    finishedOrder.innerHTML = `
+        <p class="order-complete-text">Thanks, ${firstName}! Your order is on its way!</p>
+    `
+}
+
+//REQUIRED: will not render properly on new order is quantity is not reset
+function resetQuantity(){
+    menuArray.forEach(function(item){
+        item.quantity = 0
+    })
+}
+
+
+//RENDER FUNCTIONS
 
 function foodListRender(menu)
 {
@@ -120,7 +167,6 @@ function orderListRender()
     console.log(orderListArray)
     orderListArray.forEach(function(item)
     {
-        console.log(item.quantity)
             addHtml += `
             <div class="seperate">
                 <div>
@@ -128,7 +174,7 @@ function orderListRender()
                     <span class="quantity-text">x${item.quantity}</span>
                     <button class="remove-btn font-overide" data-remove=${item.id}>remove</button>
                 </div>
-                <p class="price">${item.price * item.quantity}</p>
+                <p class="price">$${item.price * item.quantity}</p>
             </div>
             `
     })
@@ -137,6 +183,17 @@ function orderListRender()
     totalPrice()
 }
 
+function totalPrice()
+{
+    let totalPrice = 0
+
+    orderListArray.forEach(function(item){
+        totalPrice += item.price * item.quantity
+    })
+    document.getElementById('total-price').innerHTML = `$${totalPrice}`
+}
+
+
 function render()
 {
     foodListRender(menuArray)
@@ -144,15 +201,3 @@ function render()
 
 render();
 
-function purchaseOrder()
-{
-    modalEl.style.display = 'none'
-    const formEl = new FormData(document.getElementById('card-details-form'))
-    const fullName = formEl.get('input-name')
-    const firstName = fullName.substring(0,fullName.indexOf(" "))
-    //splice() string, starts at 0 go to indexOf(" ")
-    console.log(firstName)
-    document.getElementById('current-order').innerHTML = `
-        <p class="order-complete-text">Thanks, ${firstName}! Your order is on its way!</p>
-    `
-}
