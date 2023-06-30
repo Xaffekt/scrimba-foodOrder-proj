@@ -28,10 +28,10 @@ export const menuArray = [
     },
     
     {
-        emoji: "💕",
-        name: "Love",
-        ingredients: ["UwUs, nuzzles, cuddles"],
-        price: 999,
+        emoji: "🍟",
+        name: "Fries",
+        ingredients: ["potatoes, oil, salt"],
+        price: 2,
         quantity: 0,
         id: uuidv4()
     }

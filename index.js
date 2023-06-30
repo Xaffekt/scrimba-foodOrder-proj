@@ -27,6 +27,10 @@ document.addEventListener("click",function(e)
         e.preventDefault()
         purchaseOrder()
     }
+    else if(e.target.closest('.modal'))
+    {
+        modalEl.style.display = 'hidden'
+    }
 })
 
 function handleAddItem(itemId)
@@ -112,7 +116,6 @@ function foodListRender(menu)
 
 function orderListRender()
 {
-
     let addHtml = ''
     console.log(orderListArray)
     orderListArray.forEach(function(item)
@@ -134,8 +137,6 @@ function orderListRender()
     totalPrice()
 }
 
-
-
 function render()
 {
     foodListRender(menuArray)
@@ -147,7 +148,8 @@ function purchaseOrder()
 {
     modalEl.style.display = 'none'
     const formEl = new FormData(document.getElementById('card-details-form'))
-    let firstName = formEl.get('input-name')
+    const fullName = formEl.get('input-name')
+    const firstName = fullName.substring(0,fullName.indexOf(" "))
     //splice() string, starts at 0 go to indexOf(" ")
     console.log(firstName)
     document.getElementById('current-order').innerHTML = `
