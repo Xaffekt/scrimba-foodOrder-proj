@@ -1,0 +1,55 @@
+Testing the app:
+[x] adding 1
+[x] adding multiple
+[x] deleting 1
+[x] deleting multiple
+[x] deleting all
+[x] total sum
+[x] name input validation
+[x] CCN input validation
+[x] CCV input validation
+[x] message display
+[-] new order
+
+What you've done well:
+[x] perfectly working app
+[x] followed the design
+[x] used a CDN, but actually not using it in the app :D
+[x] modified the data to suit your programming needs, adding quantity
+
+**JavaScript skills demonstrated**
+[x] event.target.value + data attributes
+[x] classList.add/remove/toggle
+[x] .forEach
+[x] more complex object and array structures
+[x] .includes(), .filter() => do you know about .find()?
+[] for…in
+[x] function expression, bracket notation
+[x] preventDefault
+[x] FormData
+[] querySelector
+
+- extra step to validate first name/last name
+- use of more advanced methods (.splice())
+
+What could be improved:
+[x] UX: clear form values after order
+[x] UX: allow user to close/cancel payment modal
+[x] Responsive to some extent (width on .container)
+[x] .submit-btn CSS -     padding: 18px 175px 18px 194px;
+[x] class v. ID => # = 100points .10points h1 1point
+[x] HTML markup: <!DOCTYPE html>
+<html lang="en">
+[x] HTML: comment when elements are rendered via JS
+[x] CCN min length doesn't match a real card
+[x] syntax/style: if statements + spacing
+[x] render function can be shortened
+[x] naming functions: hideOrder()
+[x] cleaning up unused const / css etc. (e.g. payBtn)
+
+Your question:
+ - is it better to move some functions in another file or keep everything in index.js?
+ => short answer: it depends on the project.
+  
+Challenge:
+Render the ingredients' list with spaces
