@@ -7,45 +7,42 @@ import {menuArray} from "./data.js"
 const foodList = document.getElementById('food-list-container')
 const orderSection = document.getElementById('current-order')
 const orderList = document.getElementById('order-list')
-const completeOrderBtn = document.getElementById('submit-order-btn')
 const finishedOrder = document.getElementById('finished-order')
 
 //updated in purchaseOrder()
 let orderListArray = []
 
 const modalEl = document.getElementById('modal')
-const payBtn = document.getElementById('modal-submit-btn')
 const cardDetailsForm = document.getElementById('card-details-form')
 
-document.addEventListener("click",function(e)
-{
-    if(e.target.dataset.add)
-    {
+document.addEventListener("click",function(e) {
+    if(e.target.dataset.add) {
         handleAddItem(e.target.dataset.add)
-        hideOrder()
+        toggleOrderDisplay()
     }
-    else if(e.target.dataset.remove)
-    {
+    else if(e.target.dataset.remove) {
         handleRemoveItem(e.target.dataset.remove)
-        hideOrder()
+        toggleOrderDisplay()
     }
-    else if(e.target === completeOrderBtn)
-    {
+    else if(e.target === document.getElementById('submit-order-btn')) {
         modalEl.style.display = 'inline'
+    }
+    else if(e.target === document.getElementById('modal-close')) {
+        modalEl.style.display = 'none'
     }
 })
 
-cardDetailsForm.addEventListener('submit',function(e){
+cardDetailsForm.addEventListener('submit',function(e) {
     e.preventDefault()
     purchaseOrder()
 })
 
-function handleAddItem(itemId)
-{
+function handleAddItem(itemId) {
     const menuItem = menuArray.filter(function(item)
     {
         return item.id === itemId
     })[0]
+
     menuItem.quantity++
 
     orderListArray.push(menuItem)
@@ -57,60 +54,51 @@ function removeDuplicateFood(foodItem)
 {
     let itemIndex
     let isOrdered = false
-    orderListArray.forEach(function(item, index){
-        if(foodItem.name === item.name && item.quantity > 1)
-        {
+    orderListArray.forEach(function(item, index) {
+        if(foodItem.name === item.name && item.quantity > 1) {
             itemIndex = index
             isOrdered = true
         }
     })
-    if(isOrdered){
+    if(isOrdered)
         orderListArray.splice(itemIndex,1)
-    }
 }
 
 function handleRemoveItem(itemId) //tried adding removeAll btn but it was causing a lot of problems. may revisit in the future
 {
     orderListArray.forEach(function(item, index){
         if(item.id === itemId)
-        {
             item.quantity--
-        }
-        if(item.quantity <= 0)  //removes item from array when quantity reaches 0
-        {
+
+        if(item.quantity <= 0)//removes item from array when quantity reaches 0
             orderListArray.splice(index,1)
-        }
     })
 
     orderListRender()
 }
 
 
-function hideOrder()
-{
-    if(orderListArray.length < 1)
-    {
+function toggleOrderDisplay() {
+    if(orderListArray.length < 1) {
         orderSection.classList.add('hidden')
     }
-    else{
+    else {
         orderSection.classList.remove('hidden')
         finishedOrder.classList.add('hidden')
     }
 }
 
-function purchaseOrder()
-{
+function purchaseOrder() {
     modalEl.style.display = 'none'
     const form = new FormData(cardDetailsForm)
     const fullName = form.get('input-name')
     let firstName = ""
 
     //ensures name is rendered if there is no spaces
-    if(fullName.indexOf(" ") < 0)
-    {
+    if(fullName.indexOf(" ") < 0) {
         firstName = fullName
     }
-    else{
+    else {
         firstName = fullName.substring(0,fullName.indexOf(" "))
     }
 
@@ -118,6 +106,7 @@ function purchaseOrder()
     orderSection.classList.add('hidden')
     orderListArray = []
     resetQuantity()
+    cardDetailsForm.reset()
 
     //replaces order section with finished order div
     finishedOrder.classList.remove('hidden')
@@ -127,8 +116,8 @@ function purchaseOrder()
 }
 
 //REQUIRED: will not render properly on new order is quantity is not reset
-function resetQuantity(){
-    menuArray.forEach(function(item){
+function resetQuantity() {
+    menuArray.forEach(function(item) {
         item.quantity = 0
     })
 }
@@ -136,12 +125,19 @@ function resetQuantity(){
 
 //RENDER FUNCTIONS
 
-function foodListRender(menu)
-{
+function foodListRender(menu) {
     let addHtml = ""
 
-    menu.forEach(function(item)
-    {
+    menu.forEach(function(item) {
+
+        let ingredientStr = ""
+        item.ingredients.forEach(function(ingredient, index){
+            if(index === 0)
+                ingredientStr += ingredient
+            else
+                ingredientStr += ", " + ingredient
+         })
+
         addHtml += `
             <div class="seperate food-list">                
                 <!-- Item text -->
@@ -149,7 +145,7 @@ function foodListRender(menu)
                     <p class="food-icon">${item.emoji}</p>
                     <div>
                         <h2 class="dark-text">${item.name}</h2>
-                        <p class="grey-subtext">${item.ingredients}</p>
+                        <p class="grey-subtext">${ingredientStr}</p>
                         <p class="price">$${item.price}</p>
                     </div>
                 </div>
@@ -161,12 +157,10 @@ function foodListRender(menu)
     foodList.innerHTML = addHtml
 }
 
-function orderListRender()
-{
+function orderListRender() {
     let addHtml = ''
     console.log(orderListArray)
-    orderListArray.forEach(function(item)
-    {
+    orderListArray.forEach(function(item) {
             addHtml += `
             <div class="seperate">
                 <div>
@@ -183,8 +177,7 @@ function orderListRender()
     totalPrice()
 }
 
-function totalPrice()
-{
+function totalPrice() {
     let totalPrice = 0
 
     orderListArray.forEach(function(item){
@@ -193,11 +186,6 @@ function totalPrice()
     document.getElementById('total-price').innerHTML = `$${totalPrice}`
 }
 
+foodListRender(menuArray)
 
-function render()
-{
-    foodListRender(menuArray)
-} 
-
-render();
 

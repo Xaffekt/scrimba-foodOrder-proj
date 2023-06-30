@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
     <head>
         <title>Jimmy's Diner</title>
 
@@ -6,11 +8,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
         <link rel="stylesheet" href="index.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,21 +19,20 @@
     </head>
     <body>
         <main>
-            <!-- Hero -->
             <header>
-                <!-- Background image -->
                 <h1 class="container shadow">Jimmy's Diner</h1>
                 <p class="container shadow">The best burgers and pizza in town</p>
             </header>
-            <!-- Food selection -->
-            <section class="container" id="food-list-container"></section>
-
+            
+            <section class="container" id="food-list-container">
+                <!-- Food selection rendered in JS-->
+            </section>
 
             <!-- Order Section -->
             <section class="container hidden" id="current-order">
                 <h2>Your Order</h2>
-                <!-- List of Items -->
                 <div class="order-list" id="order-list">
+                    <!-- List of Items rendered in JS -->
                 </div>
                 <div class="seperate total-price">
                     <h3>Total price:</h3>
@@ -46,14 +42,17 @@
             </section>
             <div class="container hidden" id="finished-order"></div>
         </main>
+
+        <!-- Modal -->
         <div class="modal hidden" id="modal">
             <div class="modal-inner font-overide">
+                <button class="close-modal-btn" id="modal-close">X</button>
                 <h2>Enter card details</h2>
                 <form id="card-details-form" required>
                     <input type="text" name="input-name" pattern="[A-Za-z].{0,36}" placeholder="Enter your name" required>
                     <input name="credit-number" type="tel" pattern="\d*" minlength="16" maxlength="16" placeholder="Enter card number" required>
                     <input name="credit-ccv" type="tel" pattern="\d*" minlength="3" maxlength="3" placeholder="Enter CCV" required>
-                    <button type="submit" class="submit-btn" id="modal-submit-btn">Pay</button>
+                    <button type="submit" class="submit-btn">Pay</button>
                 </form>
             </div>
         </div>

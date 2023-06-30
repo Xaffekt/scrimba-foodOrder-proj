@@ -69,6 +69,7 @@ header{
 button{
     user-select: none;
     padding: 0;
+    margin: 0;
 }
 button:hover{
     cursor: pointer;
@@ -76,7 +77,8 @@ button:hover{
 
 .container{
     margin: 0 auto;
-    width: 504px;
+    max-width: 504px;
+    min-width: 360px;
 }
 
 .seperate{
@@ -141,7 +143,10 @@ button:hover{
 }
 
 .submit-btn{
-    padding: 18px 175px 18px 194px;
+    display: block;
+    width: 100%;
+    padding: 20px 40px;
+    margin: 0;
     border-radius: 3px;
     border: none;
     background: #16DB99;
@@ -150,7 +155,6 @@ button:hover{
 }
 
 .modal{
-    /* display: none; */
     position: fixed;
     right: 0;
     left: 0;
@@ -172,7 +176,7 @@ button:hover{
 }
 
 .modal-inner h2{
-    margin: 46px auto;
+    margin: 15px auto;
     text-align: center;
 }
 
@@ -180,24 +184,30 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 23px;
+    
     margin: 0;
+    
 }
+
 input{
     height: 71px;
+    margin: 10px 0 0 0;
     width: 100%;
     border-radius: 3.89px;
     border: 1.297px solid #757575;
     padding-left: 26px;
 }
-#modal-submit-btn{
-    width: 100%;
-    height: 71px ;
+
+.close-modal-btn{
+    
+    height: 50px ;
+    width: 50px;
     font-weight: bold;
     padding: 0;
-    margin: 26px 0 0 0;
+    margin:0 0 0 90%;
+    background: transparent;
+    border: none;
 }
-
 
 .hidden{
     display: none;

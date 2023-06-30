@@ -32,6 +32,8 @@ What you've done well:
 - extra step to validate first name/last name
 - use of more advanced methods (.splice())
 
+UPDATE 1.1 has worked on the following listed below
+
 What could be improved:
 [x] UX: clear form values after order
 [x] UX: allow user to close/cancel payment modal
